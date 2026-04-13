@@ -1,0 +1,63 @@
+name: 'Build & Publish to Pages'
+on:
+  push:
+    branches: [ 'master' ]
+
+
+
+concurrency:
+  group: 'pages'
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: ⏬ Install Rust stable
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: stable
+
+      - name: ⚡ Set up cargo cache
+        uses: Swatinem/rust-cache@v2
+
+      - name: ⏬ Setup node version
+        uses: actions/setup-node@v2
+        with:
+          node-version: 20
+
+      - name: ⏬ Enable corepack and install
+        run: corepack enable && corepack install
+
+      - name: 🔄 Setup yarn in node
+        uses: actions/setup-node@v4
+        with:
+          cache: 'yarn'
+      - name: 📥 Install Node Dependencies
+        run: yarn --frozen-lockfile
+
+      - name: ⏬ Install wasm-pack
+        uses: jetli/wasm-pack-action@v0.4.0
+        with:
+          version: 'latest'
+
+      - name: 🔨 Build UI
+        run: yarn build
+
+      - name: 🔨 Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: ⏫ Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './manager-ui/dist'
+
+      - name: ⏫ Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

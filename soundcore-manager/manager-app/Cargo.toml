@@ -1,0 +1,46 @@
+[package]
+name = "manager-app"
+version = "0.2.0"
+description = "A Tauri desktop app for managing Soundcore devices"
+authors = ["Grigorios Mallios"]
+license = "MIT"
+repository = "https://github.com/gmallios/SoundcoreManager"
+edition = "2021"
+rust-version = "1.57"
+build = "build.rs"
+
+[build-dependencies]
+tauri-build = { version = "1.2", features = [] }
+
+[dependencies]
+tauri-plugin-log = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "v1" }
+log = "0.4.17"
+typeshare = "1.0.1"
+serde = { workspace = true, features = ["derive"] }
+tokio = { workspace = true, features = [
+    "time",
+    "macros",
+    "rt-multi-thread",
+    "sync",
+] }
+tauri = { version = "1.2.5", features = [
+    "api-all",
+    "devtools",
+    "process-command-api",
+    "system-tray",
+] }
+soundcore-lib = { workspace = true, features = ["btleplug-backend"] }
+manager-fut = { workspace = true }
+
+[dev-dependencies]
+soundcore-lib = { workspace = true, features = [
+    "mock",
+], default-features = false }
+
+[features]
+# by default Tauri runs in production mode
+# when `tauri dev` runs it is executed with `cargo run --no-default-features` if `devPath` is an URL
+default = ["custom-protocol"]
+# this feature is used used for production builds where `devPath` points to the filesystem
+# DO NOT remove this
+custom-protocol = ["tauri/custom-protocol"]

@@ -1,0 +1,44 @@
+# Rust / Tauri build artifacts
+target/
+soundcore-manager/target/
+
+# Node.js dependencies
+node_modules/
+soundcore-manager/node_modules/
+soundcore-manager/manager-ui/node_modules/
+
+# Yarn
+.yarn/cache/
+.yarn/unplugged/
+.yarn/build-state.yml
+.yarn/install-state.gz
+
+# Build outputs (keep the dist .gitkeep)
+soundcore-manager/manager-ui/dist/*
+!soundcore-manager/manager-ui/dist/.gitkeep
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+.Python
+*.egg-info/
+dist/
+build/
+*.so
+
+# Python SoundcoreDesktop runtime state
+soundcore-desktop/lastConnect.json
+
+# Environment files
+.env
+.env.local
+
+# Editor / OS metadata
+.DS_Store
+.Thumbs.db
+*.sublime*
+.idea/
+.vscode/settings.json
