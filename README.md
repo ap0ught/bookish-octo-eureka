@@ -8,7 +8,7 @@ A unified repository merging two open-source Soundcore device management project
 - **[soundcore-desktop/](./soundcore-desktop/)** — A lightweight Python/Tkinter desktop app providing a Bluetooth RFCOMM API and GUI for Anker Soundcore headphones.  
   *Originally from [DamienStaebler/SoundcoreDesktop](https://github.com/DamienStaebler/SoundcoreDesktop).*
 
-- **[docs/research/](./docs/research/)** — Security research and API surface analysis, including an independent academic study of all network endpoints called by the official Soundcore Android app.
+- **[docs/research/](./docs/research/)** — Security research and API surface analysis, including an independent academic study of all network endpoints called by the official Soundcore Android app. See [`PROOF.md`](./docs/research/PROOF.md) for all findings with code diffs and reproduction steps.
 
 ---
 

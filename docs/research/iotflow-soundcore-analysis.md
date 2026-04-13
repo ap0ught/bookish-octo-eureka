@@ -7,7 +7,8 @@
 **Authors:** David Schmidt, Carlotta Tagliaro, Kevin Borgolte, Martina Lindorfer  
 **DOI:** [10.1145/3576915.3623211](https://doi.org/10.1145/3576915.3623211)  
 **Artifact:** [SecPriv/iotflow on GitHub](https://github.com/SecPriv/iotflow)  
-**Data file:** [`soundcore-iotflow.csv`](./soundcore-iotflow.csv) (reproduced from [`dynamic_analysis/paths/soundcore.csv`](https://github.com/SecPriv/iotflow/blob/b00136a20bd75132ee05ec4beeb58521f9fb37d6/dynamic_analysis/paths/soundcore.csv))
+**Data file:** [`soundcore-iotflow.csv`](./soundcore-iotflow.csv) (reproduced from [`dynamic_analysis/paths/soundcore.csv`](https://github.com/SecPriv/iotflow/blob/b00136a20bd75132ee05ec4beeb58521f9fb37d6/dynamic_analysis/paths/soundcore.csv))  
+**Proof & reproduction steps:** [`PROOF.md`](./PROOF.md)
 
 ---
 
