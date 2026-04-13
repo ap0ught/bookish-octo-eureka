@@ -1,0 +1,35 @@
+{
+  "name": "soundcoremanager-tauri",
+  "private": true,
+  "scripts": {
+    "dev": "yarn build:wasm && yarn dev:ui",
+    "dev:wasm": "cargo watch -w ./manager-wasm/src -w ./soundcore-lib/src -i .gitignore -i '../manager-ui/wasm/*' -s 'yarn build:wasm && yarn dev:ui'",
+    "dev:force": "yarn workspace manager-ui dev:force",
+    "dev:ui": "yarn workspace manager-ui dev",
+    "build": "yarn build:wasm && yarn workspace manager-ui build",
+    "build:wasm": "cross-env RUSTFLAGS=--cfg=web_sys_unstable_apis wasm-pack build ./manager-wasm --out-dir ../manager-ui/wasm --no-pack",
+    "lint": "yarn workspace manager-ui lint",
+    "lint:fix": "yarn workspace manager-ui lint:fix",
+    "format": "yarn workspace manager-ui format",
+    "tauri": "tauri",
+    "gen-types": "yarn workspace manager-ui gen-types",
+    "test": "yarn workspace manager-ui test",
+    "test:coverage": "yarn workspace manager-ui test:coverage",
+    "bump-ui:patch": "yarn workspace manager-ui version --no-git-tag-version --patch",
+    "bump-ui:minor": "yarn workspace manager-ui version --no-git-tag-version --minor",
+    "bump-ui:major": "yarn workspace manager-ui version --no-git-tag-version --major",
+    "bump:patch": "yarn bump-ui:patch && yarn version --no-git-tag-version --patch && cargo set-version --bump patch",
+    "bump:minor": "yarn bump-ui:minor && yarn version --no-git-tag-version --minor && cargo set-version --bump minor",
+    "bump:major": "yarn bump-ui:major && yarn version --no-git-tag-version --major && cargo set-version --bump major"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^1.5.10",
+    "cross-env": "^7.0.3",
+    "netlify-cli": "^17.33.6"
+  },
+  "workspaces": [
+    "manager-ui"
+  ],
+  "version": "0.2.0",
+  "packageManager": "yarn@4.1.1"
+}
